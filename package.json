@@ -2,7 +2,7 @@
   "name": "create-react-tsx-component",
   "displayName": "Create React JS and React Native Component",
   "description": "Extension that creates React JS and React Native Component using Typescript or Javascript with Styled Components, SASS, LESS or CSS format.",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "publisher": "ricardo-emerson",
   "repository": "https://github.com/ricardoemerson/create-react-tsx-component",
   "icon": "images/logo.png",
@@ -144,6 +144,26 @@
           "type": "boolean",
           "default": false,
           "markdownDescription": "Defines if CSS file name will be sufixed with `.module.css` or `.module.scss`. **Important:** Only applicable if option `Styles Format` is `CSS` or `SCSS`."
+        },
+        "createReactTSXComponent.useIndex": {
+          "type": "boolean",
+          "default": "true",
+          "markdownDescription": "Defines if should use index as the created script file name. Otherwise use the supplyed component name"
+        },
+        "createReactTSXComponent.useNamedStyleFile": {
+          "type": "boolean",
+          "default": "false",
+          "markdownDescription": "Defines if should use supplyed component name as the created style file name. Otherwise use style as "
+        },
+        "createReactTSXComponent.useInterface": {
+          "type": "boolean",
+          "default": "false",
+          "markdownDescription": "Defines if should use define an typescript interface for the component props"
+        },
+        "createReactTSXComponent.defaultFolderPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Defines a default folder for inserting the desired component"
         }
       }
     }
@@ -157,6 +177,13 @@
   },
   "devDependencies": {
     "@types/node": "^12.6.8",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "tslint": "^5.12.1",
     "typescript": "^3.3.1",
     "vscode": "^1.1.28"

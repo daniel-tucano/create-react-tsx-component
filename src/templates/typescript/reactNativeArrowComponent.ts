@@ -1,13 +1,22 @@
-import CreateComponent from '../interfaces/CreateComponent';
-import creatReactImport from '../shared/functions/create-react-import';
+import CreateComponent from '../interfaces/CreateComponent'
+import creatReactImport from '../shared/functions/create-react-import'
 
-export default ({ componentName, useReactImport, useReactFC }: CreateComponent) => (
-`${ creatReactImport(useReactImport) }import { View, Text, StyleSheet } from 'react-native';
+export default ({ componentName, useReactImport, useReactFC, useInterface }: CreateComponent) => (
+`${creatReactImport(useReactImport)}import { View, Text, StyleSheet } from 'react-native';
+${useInterface
+  ? `interface ${componentName}Props {
 
-const ${ componentName }${ useReactFC ? ': React.FC' : '' } = () => {
+}`
+  : ''}
+
+const ${componentName}${useReactFC ? `: React.FC${useInterface ? `<${componentName}Props>` : ''}` : ''} = (${useInterface
+  ? `{
+
+}: ${componentName}Props`
+  : ''}) => {
   return (
     <View style={ styles.container }>
-      <Text style={ styles.title }>${ componentName }</Text>
+      <Text style={ styles.title }>${componentName}</Text>
     </View>
   );
 }
@@ -26,6 +35,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ${ componentName };
+export default ${componentName};
 `
-);
+)
